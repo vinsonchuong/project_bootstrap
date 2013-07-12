@@ -1,0 +1,22 @@
+---
+language: ruby
+bundler_args: --without development
+rvm:
+  - 2.0.0
+
+env:
+  global:
+    - POSTGRES_USER=postgres
+    - CAPYBARA_WAIT_TIME=8
+
+branches:
+  only:
+    - master
+    - /^feature-.*$/
+
+before_script:
+  - bundle exec rake db:setup
+
+script:
+  - bundle exec rspec
+  - bundle exec rake spec:javascript

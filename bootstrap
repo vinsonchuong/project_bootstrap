@@ -1,1 +1,24 @@
-echo 'Hello World!'
+#!/bin/bash -e
+recipe=$1
+path=$(realpath "$2")
+lib=$(dirname $(realpath $0))
+
+case $recipe in
+  rails)
+    export GEM_HOME="$path/.gem"
+    export GEM_PATH="$GEM_HOME:$(echo 'puts Gem.path.join(":")' | ruby)"
+    rails new "$path" --template="$lib/rails/template.rb" --database=postgresql --skip-test-unit --skip-gemfile --skip-bundle
+    unset GEM_HOME
+    unset GEM_PATH
+    ;;
+  *)
+    ;;
+esac
+
+pushd "$path" > /dev/null
+git init
+git add .
+git commit -am 'Initial commit'
+hub create
+git push -u origin master
+popd > /dev/null
