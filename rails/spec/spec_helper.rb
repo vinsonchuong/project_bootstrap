@@ -1,13 +1,16 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 
 require 'capybara/rails'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+# Hack to have zeus auto-reload spec support files
+# see /zeus_plan.rb
+unless File.exists? '.zeus.sock'
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+end
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 

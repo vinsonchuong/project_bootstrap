@@ -9,6 +9,7 @@ We assume that the following external dependencies are setup and available:
 * PostgreSQL
 * Ruby 2.0.0
 * Bundler
+* Zeus
 * [Heroku Toolbelt](http://toolbelt.heroku.com)
 
 The rest of the dependencies are handled through:
