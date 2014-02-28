@@ -1,24 +1,38 @@
 #!/bin/bash -e
+realpath() {
+	mkdir -p "$1"
+	echo $(cd "$1" && pwd)
+}
+
 recipe=$1
 path=$(realpath "$2")
-lib=$(dirname $(realpath $0))
+lib=$(realpath $(dirname "$0"))
 
 case $recipe in
-  rails)
-    export GEM_HOME="$path/.gem"
-    export GEM_PATH="$GEM_HOME:$(echo 'puts Gem.path.join(":")' | ruby)"
-    rails new "$path" --template="$lib/rails/template.rb" --database=postgresql --skip-test-unit --skip-gemfile --skip-bundle
-    unset GEM_HOME
-    unset GEM_PATH
-    ;;
-  *)
-    ;;
+	rails)
+		if [ $(ruby -e 'print RUBY_VERSION') != '2.1.1' ]
+		then
+			echo "Ruby 2.1.1 is required, but we found: $(ruby -v)"
+			exit 1
+		fi
+
+		cat <<-RUBY > "$path/Gemfile"
+			source 'https://rubygems.org'
+			ruby '2.1.1'
+			gem 'rails', '~> 4.0'
+			RUBY
+		pushd "$path" &> /dev/null
+		bundle install
+		rm Gemfile{,.lock}
+		rails new . --template="$lib/rails/template.rb" --database=postgresql --skip-test-unit --skip-gemfile --skip-bundle
+		popd &> /dev/null
+		;;
+	*)
+		;;
 esac
 
-pushd "$path" > /dev/null
+pushd "$path" &> /dev/null
 git init
 git add .
 git commit -am 'Initial commit'
-hub create
-git push -u origin master
-popd > /dev/null
+popd &> /dev/null

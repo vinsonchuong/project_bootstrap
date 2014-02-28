@@ -1,5 +1,3 @@
 //= require jquery
-//= require underscore
-//= require backbone
+//= require lodash
 //= require handlebars.runtime
-//= require_tree .
