@@ -7,7 +7,7 @@
 ### Getting Started
 We assume that the following external dependencies are setup and available:
 * PostgreSQL
-* Ruby 2.0.0
+* Ruby 2.1.1
 * Bundler
 * Zeus
 

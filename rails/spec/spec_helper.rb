@@ -1,16 +1,13 @@
-ENV['RAILS_ENV'] ||= 'test'
+ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 
 require 'capybara/rails'
 require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
+Capybara.default_driver = :poltergeist
+#Capybara.default_driver = :selenium
 
-# Hack to have zeus auto-reload spec support files
-# see /zeus_plan.rb
-unless File.exists? '.zeus.sock'
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-end
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
@@ -23,6 +20,5 @@ RSpec.configure do |config|
   config.before { DatabaseCleaner.start }
   config.after { DatabaseCleaner.clean }
 
-  config.infer_base_class_for_anonymous_controllers = false
   config.order = 'random'
 end
