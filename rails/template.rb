@@ -22,7 +22,8 @@ install_file 'app/views/layouts/application.html.erb'
 
 install_file 'app/assets/javascripts/application.js'
 install_file 'spec/javascripts/support/jasmine.yml'
-install_file 'spec/javascripts/helpers/spec_helper.js'
+install_file 'spec/javascripts/helpers/.keep'
+install_file 'spec/javascripts/spec_helper.js'
 
 install_file 'Procfile'
 
