@@ -5,11 +5,10 @@
 
 ## Development
 ### Getting Started
-We assume that the following external dependencies are setup and available:
+The application requires the following external dependencies:
 * PostgreSQL
 * Ruby 2.1.1
 * Bundler
-* Zeus
 
 The rest of the dependencies are handled through:
 ```bash
@@ -18,25 +17,30 @@ bundle install
 
 Create `.env` with the necessary database credentials:
 ```bash
-POSTGRES_USER='if different from your unix username'
-POSTGRES_PASSWORD='unless Postgres authenticates with trust or ident'
+DATABASE_USER='if different from your system username'
+DATABASE_PASSWORD='unless Postgres authenticates with trust or ident'
 ```
-Then, bootstrap the database with:
-```bash
-foreman run bundle exec rake db:setup
-foreman run bundle exec rake db:test:prepare
-```
-`foreman run` just sources `.env` before running the given command.
+These environment variables must be set before running any CLI commands. You
+can ensure that they are set by one of:
+* Manually running `source .env`
+* Prefixing all commands with `foreman run`
+* Using a tool like [direnv](http://http://direnv.net)
 
-Create a cookie encryption key with:
+Bootstrap the database with:
 ```bash
-echo "SECRET_TOKEN='$(bundle exec rake secret)'" >> .env
+source .env
+bin/rake db:setup
 ```
 
 You should now be able to run the tests and start the application:
 ```bash
-foreman start
+bin/rails s
 ```
+
+To remove the need to call `bin/rake` and `bin/rails`, you can add the `bin`
+directory to your `PATH` environment variable via:
+* `export PATH=bin:$PATH`
+* [direnv](http://http://direnv.net)
 
 ## License
 ```

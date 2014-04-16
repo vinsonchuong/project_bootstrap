@@ -1,13 +1,15 @@
 #!/bin/bash -e
-realpath() {
+which realpath &>/dev/null || realpath() {
 	mkdir -p "$1"
 	echo $(cd "$1" && pwd)
 }
 
 recipe=$1
 path=$(realpath "$2")
-lib=$(realpath $(dirname "$0"))
+bootstrap=$(readlink "$0" || echo "$0")
+lib=$(realpath $(dirname "$bootstrap"))
 
+mkdir -p "$path"
 case $recipe in
 	rails)
 		if [ $(ruby -e 'print RUBY_VERSION') != '2.1.1' ]
@@ -19,20 +21,21 @@ case $recipe in
 		cat <<-RUBY > "$path/Gemfile"
 			source 'https://rubygems.org'
 			ruby '2.1.1'
-			gem 'rails', '~> 4.0'
+			gem 'rails', '~> 4.1'
 			RUBY
-		pushd "$path" &> /dev/null
-		bundle install
-		rm Gemfile{,.lock}
-		rails new . --template="$lib/rails/template.rb" --database=postgresql --skip-test-unit --skip-gemfile --skip-bundle
-		popd &> /dev/null
+		cd "$path"
+		bundle update
+		bundle exec rails new . \
+			--template="$lib/rails/template.rb" \
+			--database=postgresql \
+			--skip-test-unit \
+			--skip-gemfile \
+			--skip-bundle
 		;;
 	*)
 		;;
 esac
 
-pushd "$path" &> /dev/null
 git init
 git add .
 git commit -am 'Initial commit'
-popd &> /dev/null
