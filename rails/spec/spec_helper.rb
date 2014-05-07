@@ -11,7 +11,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.before(:suite) do
-    ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+    ActiveRecord::Migration.maintain_test_schema! if defined?(ActiveRecord::Migration)
   end
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -23,4 +23,5 @@ RSpec.configure do |config|
   config.after { DatabaseCleaner.clean }
 
   config.order = 'random'
+  config.infer_spec_type_from_file_location!
 end

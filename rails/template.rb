@@ -18,6 +18,7 @@ directory File.dirname(__FILE__), destination_root, force: true
 Bundler.with_clean_env do
   run 'bundle update'
   rake 'db:create db:migrate'
+  rake 'db:create', env: 'test'
   run 'bundle binstubs rspec-core'
   run 'bundle exec spring binstub --all'
 end
