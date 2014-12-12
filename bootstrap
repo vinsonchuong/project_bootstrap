@@ -12,12 +12,6 @@ lib=$(realpath $(dirname "$bootstrap"))
 mkdir -p "$path"
 case $recipe in
 	rails)
-		if [ $(ruby -e 'print RUBY_VERSION') != '2.1.5' ]
-		then
-			echo "Ruby 2.1.5 is required, but we found: $(ruby -v)"
-			exit 1
-		fi
-
 		cat <<-RUBY > "$path/Gemfile"
 			source 'https://rubygems.org'
 			ruby '2.1.5'
