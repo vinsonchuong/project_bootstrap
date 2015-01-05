@@ -23,6 +23,7 @@ case $recipe in
 			--template="$lib/rails/template.rb" \
 			--database=postgresql \
 			--skip-test-unit \
+			--skip-turbolinks \
 			--skip-gemfile \
 			--skip-bundle
 		;;
