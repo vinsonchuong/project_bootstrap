@@ -2,7 +2,7 @@
 language: ruby
 bundler_args: --without development
 rvm:
-  - 2.1.2
+  - 2.2.0
 
 env:
   global:

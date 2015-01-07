@@ -7,7 +7,7 @@
 ### Getting Started
 The application requires the following external dependencies:
 * PostgreSQL
-* Ruby 2.1.5
+* Ruby 2.2.0
 * Bundler
 
 The rest of the dependencies are handled through:
