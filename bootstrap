@@ -4,13 +4,14 @@ which realpath &>/dev/null || realpath() {
 	echo $(cd "$1" && pwd)
 }
 
-recipe=$1
-path=$(realpath "$2")
-bootstrap=$(readlink "$0" || echo "$0")
-lib=$(realpath $(dirname "$bootstrap"))
+recipe="$1"
+path="$(realpath "$2")"
+bootstrap="$(readlink "$0" || echo "$0")"
+lib="$(realpath $(dirname "$bootstrap"))"
+app_name="$(basename $path)"
 
 mkdir -p "$path"
-case $recipe in
+case "$recipe" in
 	rails)
 		cat <<-RUBY > "$path/Gemfile"
 			source 'https://rubygems.org'
@@ -26,6 +27,12 @@ case $recipe in
 			--skip-turbolinks \
 			--skip-gemfile \
 			--skip-bundle
+		;;
+	node)
+		cd "$path"
+		cp -r "$lib/node/." .
+		sed -i "s/APP_NAME/$app_name/g" 'app/index.html' 'README.md'
+		npm install
 		;;
 	*)
 		;;

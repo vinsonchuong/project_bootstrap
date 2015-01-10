@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "lodash": "*",
+
+    "gulp": "*",
+    "vinyl-source-stream": "*",
+
+    "gulp-htmlmin": "*",
+
+    "gulp-cssnext": "*",
+
+    "browserify": "*",
+    "watchify": "*",
+    "6to5ify": "*",
+    "uglifyify": "*",
+
+    "browser-sync": "*",
+
+    "jasmine-core": "*",
+    "gulp-jasmine-phantom": "*",
+
+    "webdriverio": "*",
+    "selenium-standalone": "*",
+    "jasmine": "*"
+  }
+}
