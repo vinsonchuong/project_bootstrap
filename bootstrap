@@ -34,6 +34,13 @@ case "$recipe" in
 		sed -i "s/APP_NAME/$app_name/g" 'app/index.html' 'README.md'
 		npm install
 		;;
+	aur)
+		cd "$path"
+		cp -r "$lib/aur/." .
+		sed -i "s/APP_NAME/$app_name/g" 'README.md' 'bin/app_name' 'doc/app_name.md'
+		mv 'bin/app_name' "bin/$app_name"
+		mv 'doc/app_name.md' "doc/$app_name.md"
+		;;
 	*)
 		;;
 esac
