@@ -1,4 +1,10 @@
 #!/bin/bash -e
+if [ -z "$2" ]
+then
+	echo 'Please specify a project directory.'
+	exit 1
+fi
+
 which realpath &>/dev/null || realpath() {
 	mkdir -p "$1"
 	echo $(cd "$1" && pwd)
@@ -19,6 +25,7 @@ case "$recipe" in
 			gem 'rails', '~> 4.2.0'
 			RUBY
 		cd "$path"
+		gem install bundler
 		bundle update
 		bundle exec rails new . \
 			--template="$lib/rails/template.rb" \
@@ -42,6 +49,8 @@ case "$recipe" in
 		mv 'doc/app_name.md' "doc/$app_name.md"
 		;;
 	*)
+		echo 'Please specify a valid recipe.'
+		exit 1
 		;;
 esac
 
