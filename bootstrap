@@ -5,9 +5,13 @@ then
 	exit 1
 fi
 
+# Normalize GNU and OSX/BSD utils
 which realpath &>/dev/null || realpath() {
 	mkdir -p "$1"
 	echo $(cd "$1" && pwd)
+}
+sed() {
+	command sed -i'' -e "$@"
 }
 
 recipe="$1"
@@ -38,13 +42,13 @@ case "$recipe" in
 	node)
 		cd "$path"
 		cp -r "$lib/node/." .
-		sed -i "s/APP_NAME/$app_name/g" 'app/index.html' 'README.md'
+		sed "s/APP_NAME/$app_name/g" 'app/index.html' 'README.md'
 		npm install
 		;;
 	aur)
 		cd "$path"
 		cp -r "$lib/aur/." .
-		sed -i "s/APP_NAME/$app_name/g" 'README.md' 'bin/app_name' 'doc/app_name.md'
+		sed "s/APP_NAME/$app_name/g" 'README.md' 'bin/app_name' 'doc/app_name.md'
 		mv 'bin/app_name' "bin/$app_name"
 		mv 'doc/app_name.md' "doc/$app_name.md"
 		;;
