@@ -34,7 +34,7 @@ bootstrap node /path/to/new/app
 ```
 
 #### Assumptions
-* Latest stable version of Node.js installed with `node` and `npm` the `PATH`
+* Latest stable version of Node.js installed with `node` and `npm` on the `PATH`
 
 ### AUR
 An [AUR](https://aur.archlinux.org) package
