@@ -8,7 +8,7 @@ default: &default
     # Use template0 if template1 is not set to UTF8 encoding.
     'template: template0' unless PG.connect(dbname: 'postgres')
       .exec(%q{select * from pg_database where datname = 'template1' and datcollate like '%UTF8%'})
-      .any? and 'template: template 0'
+      .any?
   %>
 
 development:
