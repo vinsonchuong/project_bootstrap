@@ -23,7 +23,7 @@ bootstrap rails /path/to/new/app
 ```
 
 #### Assumptions
-* Latest version of Ruby installed and in `PATH`
+* Latest stable version of Ruby installed and on the `PATH`
 
 ### Node
 A [Node.js](http://nodejs.org) +  [Gulp](http://gulpjs.com) +
@@ -32,6 +32,9 @@ A [Node.js](http://nodejs.org) +  [Gulp](http://gulpjs.com) +
 ```sh
 bootstrap node /path/to/new/app
 ```
+
+#### Assumptions
+* Latest stable version of Node.js installed with `node` and `npm` the `PATH`
 
 ### AUR
 An [AUR](https://aur.archlinux.org) package
