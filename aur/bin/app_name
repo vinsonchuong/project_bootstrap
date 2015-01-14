@@ -1,5 +1,5 @@
 #!/bin/bash -e
-SHOW_HELP='no'
+SHOW_HELP=
 OUTPUT="$PWD"
 
 ARGS=$(getopt -o  ho: -l help,output: -- "$@")
