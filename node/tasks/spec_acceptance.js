@@ -21,12 +21,14 @@ module.exports = function(acceptanceTasks) {
     }
 
     gulp.task(options.name, options.deps, function() {
-      selenium(function() {
-        var jasmine = new Jasmine();
-        jasmine.configureDefaultReporter({
-          onComplete: options.callback
-        })
-        jasmine.execute(options.specs);
+      selenium.install(function() {
+        selenium.start(function() {
+          var jasmine = new Jasmine();
+          jasmine.configureDefaultReporter({
+            onComplete: options.callback
+          })
+          jasmine.execute(options.specs);
+        });
       });
     });
   });
