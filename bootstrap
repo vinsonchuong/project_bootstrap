@@ -11,7 +11,7 @@ which realpath &>/dev/null || realpath() {
 	echo $(cd "$1" && pwd)
 }
 sed() {
-	command sed -i'' -e "$@"
+	perl -pi -e "$@"
 }
 
 recipe="$1"
