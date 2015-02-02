@@ -9,10 +9,5 @@ env:
     - POSTGRES_USER=postgres
     - CAPYBARA_WAIT_TIME=8
 
-branches:
-  only:
-    - master
-    - /^feature-.*$/
-
 before_script:
   - bundle exec rake db:setup
