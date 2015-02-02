@@ -6,8 +6,12 @@ rvm:
 
 env:
   global:
-    - POSTGRES_USER=postgres
+    - DATABASE_USER=postgres
     - CAPYBARA_WAIT_TIME=8
+
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 
 before_script:
   - bundle exec rake db:setup
