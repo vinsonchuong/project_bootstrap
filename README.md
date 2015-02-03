@@ -12,6 +12,8 @@ bootstrap <recipe> <project_directory>
 * [`node`](#node):
   A [Node.js](http://nodejs.org) +  [Gulp](http://gulpjs.com) +
   [Browserify](http://browserify.org) web application
+* [`npm`](#npm):
+  An [npm](https://www.npmjs.org) package
 * [`aur`](#aur):
   An [AUR](https://aur.archlinux.org) package
 
@@ -34,7 +36,17 @@ bootstrap node /path/to/new/app
 ```
 
 #### Assumptions
-* Latest stable version of Node.js installed with `node` and `npm` on the `PATH`
+* Latest stable version of Node.js and npm installed and on the `PATH`
+
+### NPM
+An [npm](https://www.npmjs.org) package
+
+```sh
+bootstrap npm /path/to/new/app
+```
+
+#### Assumptions
+* Latest stable version of Node.js and npm installed and on the `PATH`
 
 ### AUR
 An [AUR](https://aur.archlinux.org) package
@@ -42,3 +54,7 @@ An [AUR](https://aur.archlinux.org) package
 ```sh
 bootstrap aur /path/to/new/app
 ```
+
+#### Assumptions
+* Arch Linux with
+  [`base-devel`](https://www.archlinux.org/groups/x86_64/base-devel/) installed

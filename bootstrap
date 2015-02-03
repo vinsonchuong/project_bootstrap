@@ -45,6 +45,13 @@ case "$recipe" in
 		sed "s/APP_NAME/$app_name/g" 'app/index.html' 'README.md'
 		npm install
 		;;
+	npm)
+		cd "$path"
+		cp -r "$lib/npm/." .
+		sed "s/APP_NAME/$app_name/g" 'README.md' 'package.json' 'spec/index_spec.js'
+		npm install
+		"$(npm bin)/jasmine" init
+		;;
 	aur)
 		cd "$path"
 		cp -r "$lib/aur/." .

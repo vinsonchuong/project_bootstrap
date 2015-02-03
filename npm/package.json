@@ -1,0 +1,24 @@
+{
+  "name": "APP_NAME",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/vinsonchuong/APP_NAME",
+  "bugs": "https://github.com/vinsonchuong/APP_NAME/issues",
+  "license": "",
+  "author": "Vinson Chuong <vinsonchuong@gmail.com>",
+  "files": ["index.js", "README.md", "LICENSE"],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinsonchuong/APP_NAME"
+  },
+  "devDependencies": {
+    "jasmine": "^2.2.0"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
+}
