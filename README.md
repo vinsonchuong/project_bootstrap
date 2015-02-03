@@ -12,6 +12,8 @@ bootstrap <recipe> <project_directory>
 * [`node`](#node):
   A [Node.js](http://nodejs.org) +  [Gulp](http://gulpjs.com) +
   [Browserify](http://browserify.org) web application
+* [`gem`](#gem):
+  A [RubyGem](https://rubygems.org)
 * [`npm`](#npm):
   An [npm](https://www.npmjs.org) package
 * [`aur`](#aur):
@@ -38,11 +40,21 @@ bootstrap node /path/to/new/app
 #### Assumptions
 * Latest stable version of Node.js and npm installed and on the `PATH`
 
+### RubyGem
+A [RubyGem](https://rubygems.org)
+
+```sh
+bootstrap gem /path/to/new/gem
+```
+
+#### Assumptions
+* Latest stable version of Ruby installed and on the `PATH`
+
 ### NPM
 An [npm](https://www.npmjs.org) package
 
 ```sh
-bootstrap npm /path/to/new/app
+bootstrap npm /path/to/new/package
 ```
 
 #### Assumptions
@@ -52,7 +64,7 @@ bootstrap npm /path/to/new/app
 An [AUR](https://aur.archlinux.org) package
 
 ```sh
-bootstrap aur /path/to/new/app
+bootstrap aur /path/to/new/package
 ```
 
 #### Assumptions

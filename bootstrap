@@ -11,7 +11,7 @@ which realpath &>/dev/null || realpath() {
 	echo $(cd "$1" && pwd)
 }
 sed() {
-	perl -pi -e "$@"
+	perl -pi -e "$@" 2>/dev/null
 }
 
 recipe="$1"
@@ -19,6 +19,7 @@ path="$(realpath "$2")"
 bootstrap="$(readlink "$0" || echo "$0")"
 lib="$(realpath $(dirname "$bootstrap"))"
 app_name="$(basename $path)"
+appName="$(echo "$app_name" | sed 's/([_-]*)([a-z]+)/\u\2/g')"
 
 mkdir -p "$path"
 case "$recipe" in
@@ -44,6 +45,16 @@ case "$recipe" in
 		cp -r "$lib/node/." .
 		sed "s/APP_NAME/$app_name/g" 'app/index.html' 'README.md'
 		npm install
+		;;
+	gem)
+		cd "$path"
+		cp -r "$lib/gem/." .
+		sed "s/APP_NAME/$app_name/g" 'APP_NAME.gemspec' 'README.md' 'lib/APP_NAME.rb'
+		sed "s/APPNAME/$appName/g" 'APP_NAME.gemspec' 'lib/APP_NAME.rb' 'lib/APP_NAME/version.rb'
+		mv APP_NAME.gemspec "$app_name.gemspec"
+		mv lib/APP_NAME "lib/$app_name"
+		mv lib/APP_NAME.rb "lib/$app_name.rb"
+		bundle install
 		;;
 	npm)
 		cd "$path"

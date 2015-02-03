@@ -1,7 +1,4 @@
 /.bundle
 /.env
-/.gem
 /log
 /tmp
-.idea
-.DS*
