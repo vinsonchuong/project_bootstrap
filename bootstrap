@@ -19,7 +19,8 @@ path="$(realpath "$2")"
 bootstrap="$(readlink "$0" || echo "$0")"
 lib="$(realpath $(dirname "$bootstrap"))"
 app_name="$(basename $path)"
-appName="$(echo "$app_name" | sed 's/([_-]*)([a-z]+)/\u\2/g')"
+AppName="$(echo "$app_name" | sed 's/([_-]*)([a-z]+)/\u\2/g')"
+appName="$(echo "$AppName" | sed 's/^([A-Z])/\l\1/')"
 
 mkdir -p "$path"
 case "$recipe" in
@@ -50,7 +51,7 @@ case "$recipe" in
 		cd "$path"
 		cp -r "$lib/gem/." .
 		sed "s/APP_NAME/$app_name/g" 'APP_NAME.gemspec' 'README.md' 'lib/APP_NAME.rb'
-		sed "s/APPNAME/$appName/g" 'APP_NAME.gemspec' 'lib/APP_NAME.rb' 'lib/APP_NAME/version.rb'
+		sed "s/APPNAME/$AppName/g" 'APP_NAME.gemspec' 'lib/APP_NAME.rb' 'lib/APP_NAME/version.rb'
 		mv APP_NAME.gemspec "$app_name.gemspec"
 		mv lib/APP_NAME "lib/$app_name"
 		mv lib/APP_NAME.rb "lib/$app_name.rb"
@@ -59,6 +60,7 @@ case "$recipe" in
 	npm)
 		cd "$path"
 		cp -r "$lib/npm/." .
+		sed "s/aPPNAME/$appName/g" 'spec/index_spec.js'
 		sed "s/APP_NAME/$app_name/g" 'README.md' 'package.json' 'spec/index_spec.js'
 		npm install
 		"$(npm bin)/jasmine" init

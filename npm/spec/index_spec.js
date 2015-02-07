@@ -1,9 +1,9 @@
 'use strict';
 
-var APP_NAME = require('../index');
+var aPPNAME = require('../index');
 
 describe('APP_NAME', function() {
   it('works', function() {
-    expect(APP_NAME()).toBe('Hello World!');
+    expect(aPPNAME()).toBe('Hello World!');
   });
 });
