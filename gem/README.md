@@ -1,5 +1,5 @@
 # APP_NAME
-[![Build Status](https://travis-ci.org/vinsonchuong/app_name.png?branch=master)](https://travis-ci.org/vinsonchuong/app_name)
+[![Build Status](https://travis-ci.org/vinsonchuong/app_name.svg?branch=master)](https://travis-ci.org/vinsonchuong/app_name)
 [![Code Climate](https://codeclimate.com/github/vinsonchuong/app_name.png)](https://codeclimate.com/github/vinsonchuong/app_name)
 [![Dependency Status](https://gemnasium.com/vinsonchuong/app_name.png)](https://gemnasium.com/vinsonchuong/app_name)
 

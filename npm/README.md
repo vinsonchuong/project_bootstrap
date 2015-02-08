@@ -1,5 +1,5 @@
 # APP_NAME
-[![Build Status](https://travis-ci.org/vinsonchuong/APP_NAME.png?branch=master)](https://travis-ci.org/vinsonchuong/APP_NAME)
+[![Build Status](https://travis-ci.org/vinsonchuong/APP_NAME.svg?branch=master)](https://travis-ci.org/vinsonchuong/APP_NAME)
 [![Code Climate](https://codeclimate.com/github/vinsonchuong/APP_NAME.png)](https://codeclimate.com/github/vinsonchuong/APP_NAME)
 
 ## Installing
