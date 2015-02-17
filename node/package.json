@@ -11,7 +11,7 @@
 
     "browserify": "*",
     "watchify": "*",
-    "6to5ify": "*",
+    "babelify": "*",
     "uglifyify": "*",
 
     "browser-sync": "*",

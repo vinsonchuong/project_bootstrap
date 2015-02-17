@@ -15,7 +15,7 @@ var bundler = _.memoize(function(filename, options) {
       });
   }
   return b
-    .transform('6to5ify', {sourceMap: true})
+    .transform('babelify', {sourceMap: true})
     .transform('uglifyify', {ignore: options.minify ? [] : '**'});
 });
 
