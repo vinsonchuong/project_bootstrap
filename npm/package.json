@@ -14,7 +14,7 @@
     "url": "https://github.com/vinsonchuong/APP_NAME"
   },
   "devDependencies": {
-    "jasmine": "^2.2.0"
+    "jasmine": "^2.3.1"
   },
   "dependencies": {
   },
