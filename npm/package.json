@@ -5,7 +5,7 @@
   "keywords": [],
   "homepage": "https://github.com/vinsonchuong/APP_NAME",
   "bugs": "https://github.com/vinsonchuong/APP_NAME/issues",
-  "license": "",
+  "license": "MIT",
   "author": "Vinson Chuong <vinsonchuong@gmail.com>",
   "files": ["LICENSE", "README.md", "src"],
   "main": "src/index.js",
