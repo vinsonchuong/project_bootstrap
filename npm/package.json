@@ -7,18 +7,25 @@
   "bugs": "https://github.com/vinsonchuong/APP_NAME/issues",
   "license": "",
   "author": "Vinson Chuong <vinsonchuong@gmail.com>",
-  "files": ["index.js", "README.md", "LICENSE"],
-  "main": "index.js",
+  "files": ["LICENSE", "README.md", "src"],
+  "main": "src/index.js",
+  "bin": {
+    "APP_NAME": "src/bin/APP_NAME.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/vinsonchuong/APP_NAME"
   },
-  "devDependencies": {
-    "jasmine": "^2.3.1"
+  "scripts": {
+    "prepublish": "dist-es6",
+    "test": "eslint && jasmine"
   },
   "dependencies": {
+    "node-promise-es6": "^0.0.2"
   },
-  "scripts": {
-    "test": "jasmine"
+  "devDependencies": {
+    "dist-es6": "^0.0.8",
+    "jasmine-es6": "^0.0.8",
+    "eslint-defaults": "^0.0.5"
   }
 }

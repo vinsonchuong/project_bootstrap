@@ -52,18 +52,19 @@ case "$recipe" in
 		cp -r "$lib/gem/." .
 		sed "s/APP_NAME/$app_name/g" 'APP_NAME.gemspec' 'README.md' 'lib/APP_NAME.rb'
 		sed "s/APPNAME/$AppName/g" 'APP_NAME.gemspec' 'lib/APP_NAME.rb' 'lib/APP_NAME/version.rb'
-		mv APP_NAME.gemspec "$app_name.gemspec"
-		mv lib/APP_NAME "lib/$app_name"
-		mv lib/APP_NAME.rb "lib/$app_name.rb"
+		mv 'APP_NAME.gemspec' "$app_name.gemspec"
+		mv 'lib/APP_NAME' "lib/$app_name"
+		mv 'lib/APP_NAME.rb' "lib/$app_name.rb"
 		bundle install
 		;;
 	npm)
 		cd "$path"
 		cp -r "$lib/npm/." .
 		sed "s/aPPNAME/$appName/g" 'spec/index_spec.js'
-		sed "s/APP_NAME/$app_name/g" 'README.md' 'package.json' 'spec/index_spec.js'
+		sed "s/APP_NAME/$app_name/g" 'README.md' 'package.json' 'spec/index_spec.js' "spec/bin/APP_NAME_spec.js"
+		mv 'src/bin/APP_NAME.js' "src/bin/$app_name.js"
+		mv 'spec/bin/APP_NAME_spec.js' "spec/bin/${app_name}_spec.js"
 		npm install
-		"$(npm bin)/jasmine" init
 		;;
 	aur)
 		cd "$path"

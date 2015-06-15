@@ -1,9 +1,7 @@
-'use strict';
-
-var aPPNAME = require('../index');
+import aPPNAME from 'APP_NAME';
 
 describe('APP_NAME', function() {
-  it('works', function() {
-    expect(aPPNAME()).toBe('Hello World!');
+  it('exports "Hello World!"', function() {
+    expect(aPPNAME).toBe('Hello World!');
   });
 });
