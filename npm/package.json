@@ -21,7 +21,7 @@
     "test": "eslint && jasmine"
   },
   "dependencies": {
-    "node-promise-es6": "^0.0.2"
+    "node-promise-es6": "^0.0.3"
   },
   "devDependencies": {
     "dist-es6": "^0.0.12",
