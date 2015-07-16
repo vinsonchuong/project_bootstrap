@@ -1,18 +1,23 @@
-#!/bin/bash -e
-SHOW_HELP=
-OUTPUT="$PWD"
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o xtrace
+set -o pipefail
 
-ARGS=$(getopt -o  ho: -l help,output: -- "$@")
+SHOW_HELP=
+OUTPUT=${PWD}
+
+ARGS=$(getopt -o  ho: -l help,output: -- "${@}")
 eval set -- $ARGS
-while [ $# -gt 0 ]
+while [[ ${#} -gt 0 ]]
 do
-	case "$1" in
+	case "${1}" in
 		-h|--help)
-			SHOW_HELP='yes'
+			SHOW_HELP=yes
 			shift
 			;;
 		-o|--output)
-			OUTPUT="$2"
+			OUTPUT=${2}
 			shift 2
 			;;
 		--)
@@ -22,7 +27,7 @@ do
 	esac
 done
 
-if [ "$SHOW_HELP" ]
+if [[ $SHOW_HELP ]]
 then
 	cat '/usr/share/APP_NAME/help/APP_NAME'
 else
