@@ -1,7 +1,7 @@
 # APP_NAME(1) -- echos input
 
 ## SYNOPSIS
-`APP_NAME` [`-o`|`--output` .]  <text><br>
+`APP_NAME` [`-o`|`--output` .]  _text_<br>
 `APP_NAME` `-h`|`--help`<br>
 
 ## DESCRIPTION
